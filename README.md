@@ -1,24 +1,75 @@
- # AI-Based-Document-Classification-System
+# AI-Based Document Classification System
 
-An end-to-end Natural Language Processing (NLP) and Machine Learning** project that automatically classifies news articles into five predefined categories: Business, Entertainment, Politics, Sport, and Tech.
-Developed using the BBC News dataset, the system demonstrates a complete text-classification pipeline, including dataset cleaning, duplicate removal, text preprocessing, feature extraction, model training, evaluation, and interactive prediction.
- Key Features
-- Dataset Preparation:Processes 2,225 BBC news articles and removes duplicates, resulting in 2,127 unique documents.
-- Text Preprocessing: Applies lowercasing, punctuation and digit removal, tokenization, stop-word removal, and lemmatization.
-- Feature Extraction: Uses TF-IDF vectorization with unigrams and bigrams, limited to 5,000 features.
-- Machine Learning Models: Implements and compares Logistic Regression and Multinomial Naive Bayes.
-- *Model Evaluation:** Measures accuracy, precision, recall, and F1-score, supported by classification reports and confusion matrices.
-- Interactive Prediction:Allows users to enter news articles, select a trained model, and receive predicted categories with probability scores.
-  Web Deployment:Provides a Streamlit application for real-time document classification.
- Model Performance
-The current notebook reports the following test accuracies:
-| Algorithm | Accuracy |
-|---|---:|
-| Logistic Regression | 97.65% |
-| Multinomial Naive Bayes | 98.12% |
- Technologies Used
-Python, Pandas, NumPy, NLTK, Scikit-learn, TF-IDF, Matplotlib, Seaborn, Pickle, and Streamlit.
- Project Objective
-To demonstrate practical expertise in Natural Language Processing, supervised Machine Learning, text analytics, model evaluation, and interactive AI application development.
+A text-classification project that sorts BBC news articles into five categories (business, entertainment, politics, sport, tech) using TF-IDF features with Logistic Regression and Multinomial Naive Bayes, built with Python and scikit-learn.
 
-This project showcases the complete journey from raw textual data to an intelligent document classification application.
+## Overview
+
+The notebook covers a full classical NLP pipeline: loading the BBC News dataset, removing duplicates, cleaning and normalising text, extracting TF-IDF features, training two classifiers, comparing them with classification reports, and predicting the category of new text with class probabilities.
+
+## Dataset
+
+- **Source:** BBC News articles (2,225 articles), downloaded in the notebook.
+- **Cleaning:** 98 duplicate rows were removed, leaving **2,127** unique articles.
+- **Classes after cleaning:** sport 505, business 503, politics 403, entertainment 369, tech 347.
+
+## Methodology
+
+1. Remove duplicate articles.
+2. Preprocess text with NLTK: lowercasing, removing punctuation and digits, tokenisation, stop-word removal and lemmatisation.
+3. Convert text to TF-IDF vectors (5,000 features).
+4. Split the data 80/20: 1,701 training and 426 test articles.
+5. Train Logistic Regression and Multinomial Naive Bayes.
+6. Evaluate with precision, recall, F1-score and confusion matrices.
+7. Predict the category of custom text and show the probability for each class.
+
+## Results
+
+Evaluated on the 426 held-out test articles:
+
+| Model | Accuracy |
+|---|---|
+| Logistic Regression | 0.9765 |
+| Multinomial Naive Bayes | 0.9812 |
+
+Per-class F1-scores are between 0.96 and 1.00 for both models. Politics and business were the most frequently confused categories (lowest F1 at 0.96-0.97).
+
+## Limitations
+
+- The dataset is small, and its categories are fairly distinct in vocabulary, which makes the task easier than classifying text from mixed sources.
+- Results come from a single random split with 426 test articles, so the small accuracy difference between the two models should not be over-interpreted.
+- The models were not tested on news from other publishers or time periods.
+- In a sample prediction, Logistic Regression returned a low-confidence result (about 53%), so probabilities should be read with care on short or unusual text.
+
+## Future Improvements
+
+- Use cross-validation and test on an independent news dataset.
+- Compare with a linear SVM or a transformer-based model.
+- Add the Streamlit app and saved models to the repository (the notebook generates the app script, but it is not included here).
+
+## Project Files
+
+| File | Description |
+|---|---|
+| `AI_Based_Document_Classification_System.ipynb` | Main notebook: preprocessing, training, evaluation, interactive prediction |
+| `ai_based_document_classification_system (1).py` | Python export of the notebook |
+
+## How to Run
+
+The notebook was built in Google Colab and downloads the dataset and NLTK resources, so it needs an internet connection.
+
+**Google Colab (recommended):** upload the notebook and run all cells.
+
+**Locally:**
+
+```bash
+pip install pandas numpy nltk scikit-learn matplotlib seaborn jupyter
+jupyter notebook AI_Based_Document_Classification_System.ipynb
+```
+
+## Technologies
+
+Python · Pandas · NumPy · NLTK · scikit-learn (TF-IDF, Logistic Regression, Naive Bayes) · Matplotlib · Seaborn · Google Colab
+
+## Author
+
+**Alisha Arif** · [GitHub](https://github.com/alishaarif500) · [LinkedIn](https://linkedin.com/in/alisha-arif-22aa42386/)
