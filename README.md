@@ -1,75 +1,194 @@
-# AI-Based Document Classification System
 
-A text-classification project that sorts BBC news articles into five categories (business, entertainment, politics, sport, tech) using TF-IDF features with Logistic Regression and Multinomial Naive Bayes, built with Python and scikit-learn.
 
-## Overview
+# 🤖 AI-Based Document Classification System
 
-The notebook covers a full classical NLP pipeline: loading the BBC News dataset, removing duplicates, cleaning and normalising text, extracting TF-IDF features, training two classifiers, comparing them with classification reports, and predicting the category of new text with class probabilities.
+**An NLP and Machine Learning project that automatically classifies BBC News articles into five categories using TF-IDF feature extraction, Logistic Regression, and Multinomial Naive Bayes.**
 
-## Dataset
+## 📌 Overview
 
-- **Source:** BBC News articles (2,225 articles), downloaded in the notebook.
-- **Cleaning:** 98 duplicate rows were removed, leaving **2,127** unique articles.
-- **Classes after cleaning:** sport 505, business 503, politics 403, entertainment 369, tech 347.
+The AI-Based Document Classification System is an end-to-end Natural Language Processing (NLP) and supervised Machine Learning project designed to automatically categorize news articles into predefined topics.
 
-## Methodology
+Using the BBC News dataset, the system processes and cleans textual data, removes duplicate articles, extracts meaningful text features using TF-IDF, and trains two machine learning classification models: Logistic Regression and Multinomial Naive Bayes.
 
-1. Remove duplicate articles.
-2. Preprocess text with NLTK: lowercasing, removing punctuation and digits, tokenisation, stop-word removal and lemmatisation.
-3. Convert text to TF-IDF vectors (5,000 features).
-4. Split the data 80/20: 1,701 training and 426 test articles.
-5. Train Logistic Regression and Multinomial Naive Bayes.
-6. Evaluate with precision, recall, F1-score and confusion matrices.
-7. Predict the category of custom text and show the probability for each class.
+The project also supports custom text predictions, allowing users to classify new articles and view their predicted categories with class probability scores.
 
-## Results
+## 🎯 Project Objectives
 
-Evaluated on the 426 held-out test articles:
+The primary objectives of this project are to:
+
+- Develop an automated system for classifying news articles into predefined categories using Natural Language Processing.
+- Apply text preprocessing techniques to clean, normalize, and prepare unstructured textual data.
+- Transform text into meaningful numerical representations using TF-IDF feature extraction.
+- Implement and compare Logistic Regression and Multinomial Naive Bayes for multi-class text classification.
+- Evaluate model performance using accuracy, precision, recall, F1-score, and confusion matrices.
+- Identify the better-performing classification model through comparative evaluation.
+- Enable automated categorization of new text with predicted labels and class probability scores.
+
+## ✨ Key Features
+
+- **Multi-Class Classification:** Categorizes news articles into five topics: Business, Entertainment, Politics, Sport, and Tech.
+- **Text Preprocessing:** Cleans and prepares text by removing unnecessary characters, stop words, and duplicates.
+- **NLTK-Based Processing:** Uses tokenization, lowercasing, and lemmatization.
+- **TF-IDF Feature Extraction:** Converts text into numerical features using unigram and bigram representations.
+- **Machine Learning Models:** Implements Logistic Regression and Multinomial Naive Bayes.
+- **Model Evaluation:** Evaluates performance using accuracy, precision, recall, F1-score, classification reports, and confusion matrices.
+- **Custom Text Prediction:** Allows users to enter new text and obtain a predicted category.
+- **Probability Analysis:** Displays class probability scores for predictions.
+- **Model Comparison:** Compares both classifiers to identify the better-performing model.
+
+## 📊 Dataset
+
+This project uses the **BBC News Articles Dataset**, containing news articles from five categories.
+
+### Dataset Summary
+
+| Description | Count |
+|---|---:|
+| Original articles | 2,225 |
+| Duplicate articles removed | 98 |
+| Unique articles | 2,127 |
+| Training samples (80%) | 1,701 |
+| Testing samples (20%) | 426 |
+| Maximum TF-IDF features | 5,000 |
+
+### Category Distribution
+
+| Category | Articles |
+|---|---:|
+| Sport | 505 |
+| Business | 503 |
+| Politics | 403 |
+| Entertainment | 369 |
+| Tech | 347 |
+| **Total** | **2,127** |
+
+The dataset is downloaded within the notebook.
+
+## ⚙️ Methodology
+
+The project follows a structured NLP and Machine Learning workflow:
+
+1. **Dataset Loading:** Loads the BBC News dataset.
+2. **Duplicate Removal:** Identifies and removes duplicate articles.
+3. **Text Preprocessing:** Applies lowercase conversion, punctuation and digit removal, tokenization, stop-word removal, and lemmatization using NLTK.
+4. **Feature Extraction:** Converts text into numerical features using TF-IDF with unigrams and bigrams, limited to 5,000 features.
+5. **Data Splitting:** Divides the dataset into training (80%) and testing (20%) sets using stratified sampling.
+6. **Model Training:** Trains Logistic Regression and Multinomial Naive Bayes classifiers.
+7. **Model Evaluation:** Evaluates both models using classification metrics and confusion matrices.
+8. **Custom Prediction:** Predicts categories for new text and provides class probability scores.
+
+## 📈 Model Performance & Results
+
+Both models were evaluated on **426 held-out test articles**.
+
+### Accuracy Comparison
 
 | Model | Accuracy |
+|---|---:|
+| Logistic Regression | 97.65% |
+| Multinomial Naive Bayes | **98.12%** |
+
+### Evaluation Highlights
+
+- Both models achieved strong classification performance.
+- Class-wise F1-scores ranged from 0.96 to 1.00 for both models.
+- Business and Politics were the most frequently confused categories.
+- Multinomial Naive Bayes achieved the highest accuracy of **98.12%**.
+
+<details>
+<summary><b>Additional Evaluation Insights</b></summary>
+
+The models were also assessed using:
+
+- Precision, recall, and F1-score.
+- Classification reports for individual categories.
+- Confusion matrices to analyze classification errors.
+- Comparative evaluation to identify the better-performing model.
+
+</details>
+
+**Best-Performing Model:** Multinomial Naive Bayes (98.12% accuracy).
+
+## 🛠️ Technologies & Libraries
+
+| Category | Tools |
 |---|---|
-| Logistic Regression | 0.9765 |
-| Multinomial Naive Bayes | 0.9812 |
+| Programming Language | Python |
+| Data Processing | Pandas, NumPy |
+| Natural Language Processing | NLTK |
+| Feature Extraction | TF-IDF |
+| Machine Learning | Scikit-learn |
+| Data Visualization | Matplotlib, Seaborn |
+| Model Serialization | Pickle |
+| Development Environment | Jupyter Notebook |
 
-Per-class F1-scores are between 0.96 and 1.00 for both models. Politics and business were the most frequently confused categories (lowest F1 at 0.96-0.97).
+## 📁 Project Structure
 
-## Limitations
+```text
+AI-Based-Document-Classification-System/
+│
+├── AI_Based_Document_Classification_System.ipynb
+├── .gitignore
+└── README.md
+```
 
-- The dataset is small, and its categories are fairly distinct in vocabulary, which makes the task easier than classifying text from mixed sources.
-- Results come from a single random split with 426 test articles, so the small accuracy difference between the two models should not be over-interpreted.
-- The models were not tested on news from other publishers or time periods.
-- In a sample prediction, Logistic Regression returned a low-confidence result (about 53%), so probabilities should be read with care on short or unusual text.
+## 🚀 Installation & Usage
 
-## Future Improvements
+### 1. Clone the Repository
 
-- Use cross-validation and test on an independent news dataset.
-- Compare with a linear SVM or a transformer-based model.
-- Add the Streamlit app and saved models to the repository (the notebook generates the app script, but it is not included here).
+```bash
+git clone https://github.com/alishaarif500/AI-Based-Document-Classification-System.git
+```
 
-## Project Files
+### 2. Navigate to the Project Directory
 
-| File | Description |
-|---|---|
-| `AI_Based_Document_Classification_System.ipynb` | Main notebook: preprocessing, training, evaluation, interactive prediction |
-| `ai_based_document_classification_system (1).py` | Python export of the notebook |
+```bash
+cd AI-Based-Document-Classification-System
+```
 
-## How to Run
-
-The notebook was built in Google Colab and downloads the dataset and NLTK resources, so it needs an internet connection.
-
-**Google Colab (recommended):** upload the notebook and run all cells.
-
-**Locally:**
+### 3. Install Required Libraries
 
 ```bash
 pip install pandas numpy nltk scikit-learn matplotlib seaborn jupyter
-jupyter notebook AI_Based_Document_Classification_System.ipynb
 ```
 
-## Technologies
+### 4. Launch Jupyter Notebook
 
-Python · Pandas · NumPy · NLTK · scikit-learn (TF-IDF, Logistic Regression, Naive Bayes) · Matplotlib · Seaborn · Google Colab
+```bash
+jupyter notebook
+```
 
-## Author
+### 5. Run the Project
 
-**Alisha Arif** · [GitHub](https://github.com/alishaarif500) · [LinkedIn](https://linkedin.com/in/alisha-arif-22aa42386/)
+- Open `AI_Based_Document_Classification_System.ipynb`.
+- Execute the notebook cells sequentially.
+- Follow the workflow for data preprocessing, feature extraction, model training, and evaluation.
+- Use the custom prediction functionality to classify new text.
+
+**Note:** An internet connection is required for the initial dataset download. Required NLTK resources must also be available.
+
+## 🎓 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+- Understanding Natural Language Processing fundamentals.
+- Cleaning and preprocessing textual data using NLTK.
+- Converting text into numerical representations using TF-IDF.
+- Implementing supervised Machine Learning classification algorithms.
+- Evaluating models using accuracy, precision, recall, and F1-score.
+- Interpreting confusion matrices and class-wise classification results.
+- Comparing machine learning models based on performance.
+- Developing an end-to-end text classification workflow, from raw data preprocessing to custom predictions.
+
+## 👩‍💻 Developer
+
+**Alisha Arif**
+
+- **GitHub:** [github.com/alishaarif500](https://github.com/alishaarif500)
+- **LinkedIn:** [linkedin.com/in/alisha-arif-22aa42386](https://linkedin.com/in/alisha-arif-22aa42386)
+- **Email:** [alishaarif500@gmail.com](mailto:alishaarif500@gmail.com)
+
+---
+
+⭐ If you find this project useful, consider giving the repository a star!
+
